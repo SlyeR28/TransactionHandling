@@ -1,0 +1,23 @@
+@Transactional annotation in springboot ->
+ ensures that multiple database operations are executed atomically as a single transaction , providing
+ commit on success or rollback on failure
+
+ in simple terms -> if we are doing multiple task or method calls in single method and annoated it with @Transacational
+ annoatation in springboot , then all the operations are executed as a single transaction or single unit of work
+  if any of the operation fails due to some runtime exception or any network issue or any reason of failure
+  then it will be rollback completely nothing will save in Database
+
+@Transacational follows ACID property
+A stands for Atomicity -> all the operations are executed as a single transaction or single unit of work
+C stands for Consistency -> Enusres that Database state should be conistent befor and after transaction
+I stands for Isolation -> it enusures that if multiple transaction are running in parrallel they should
+  not interfare with each other
+D stands for Durability -> it enusures that commited or compeleted transaction data will nevwe be lost despite of
+ system failure
+
+there are two different senrios of transaction in springboot
+1 -> runtime exception -> transactional work probperly if there is runtime exception or point failure
+   transaction roll back to its initial state
+2 -> in checked exception -> transactional not works properly , the point where have putted the checked
+  Exception thing some time there is commit in database that put some inconsistencies
+  we can handle it via @Transactional(rollbackFor = Exception.class) it enuses consistency

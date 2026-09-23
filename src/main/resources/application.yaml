@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: Transactions
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/transactions
+    username: root
+    password: Rishabh@28
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+        generate_statistics: false
+        connection:
+          isolation: 2
+    database-platform: org.hibernate.dialect.MySQLDialect
+
+logging:
+  level:
+    root: INFO
+    org.springframework.transaction: TRACE
+    org.springframework.transaction.interceptor: TRACE
+    org.springframework.transaction.support: TRACE
+    org.springframework.orm.jpa: TRACE
+    org.springframework.orm.jpa.jpaTransactionManager: DEBUG
+
+
+  org.hibernate: DEBUG
+  org.hibernate.sql: DEBUG
+  org.hibernate.orm.jdbc.bind: TRACE
+  org.hibernate.resource.transaction: DEBUG
+  org.hibernate.engine.transaction: DEBUG
+
+
+server:
+  port: 8080
